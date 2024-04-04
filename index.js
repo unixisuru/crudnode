@@ -61,7 +61,7 @@
 // })
 
 
-import db from './mongoC';
+import db from './mongoC.js';
 import express from 'express';
 import cors from 'cors';
 import UserModel from './User';
