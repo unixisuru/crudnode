@@ -18,13 +18,13 @@ jobs:
       - name: Build Docker Image
         run: docker build -t unixisuru/crudnode  .
       - name: Publish Image to docker hub
-        run: docker push unixisuru/crudnode
+        run: docker push unixisuru/crudnode:latest
 
   deploy:
     needs: build
     runs-on: self-hosted
     steps:
      - name: Pull image from docker hub
-       run: docker pull unixisuru/crudnode
+       run: docker pull unixisuru/crudnode:latest
      - name: Run Docker Container
        run: docker run -d -p 3000:3000 --name crudnode-container -e MONGO_PASSWORD='${{secrets.MONGO_PASSWORD}}' unixisuru/crudnode
