@@ -18,7 +18,7 @@ jobs:
       - name: Build Docker Image
         run: docker build -t unixisuru/crudnode  .
       - name: Publish Image to docker hub
-        run: docker push unixisuru/crudnode:latest
+        run: docker push unixisuru/crudnode:latest 
 
   deploy:
     needs: build
