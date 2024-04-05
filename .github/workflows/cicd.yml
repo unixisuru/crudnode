@@ -15,15 +15,15 @@ jobs:
       - name: Log in to docker hub
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
       - name: Build Docker Image
-        run: docker build -t unixisuru/nodejs-app .
+        run: docker build -t unixisuru/crudnode .
       - name: Publish Image to docker hub
-        run: docker push unixisuru/nodejs-app:latest
+        run: docker push unixisuru/crudnode:latest
 
   deploy:
     needs: build
     runs-on: self-hosted
     steps:
      - name: Pull image from docker hub
-       run: docker pull unixisuru/nodejs-app:latest
+       run: docker pull unixisuru/crudnode:latest
      - name: Run docker container
-       run: docker run -d -p 3000:3000 --name nodejs-app-container -e MONGO_PASSWORD='${{secrets.MONGO_PASSWORD}}' unixisuru/nodejs-app
+       run: docker run -d -p 3000:3000 --name nodejs-app-container -e MONGO_PASSWORD='${{secrets.MONGO_PASSWORD}}' unixisuru/crudnode
