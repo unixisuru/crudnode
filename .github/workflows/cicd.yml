@@ -14,7 +14,7 @@ jobs:
       - name: Checkout Source 
         uses: actions/checkout@v4
       - name: Log in to docker hub
-        run: docker login -u unixisuru -p GGhfyterFFS5$7
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD}}
       - name: Build Docker Image
         run: docker build -t unixisuru/crudnode  .
       - name: Publish Image to docker hub
