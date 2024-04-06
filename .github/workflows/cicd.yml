@@ -16,7 +16,7 @@ jobs:
       - name: Log in to docker hub
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
       - name: Build Docker Image
-        run: docker build -t unixisuru/crudnode .
+        run: docker build -t unixisuru/crudnode  .
       - name: Publish Image to docker hub
         run: docker push unixisuru/crudnode:latest
 
